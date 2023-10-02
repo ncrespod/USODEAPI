@@ -1,0 +1,124 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Datatables {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<div class="content ">
+	<div class="panel-header ">
+		<div class="page-inner py-5">
+			<div class="d-flex align-items-left align-items-md-center flex-column flex-md-row">
+				<div>
+					<h2 class="text-white pb-2 fw-bold">Dashboard</h2>
+					<h5 class="text-white op-7 mb-2">PELICULAS</h5>
+				</div>
+				<div class="ml-md-auto py-2 py-md-0">
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="page-inner mt--5">
+
+
+
+
+		<div class="col-md-12">
+			<div class="card full-height">
+				<div class="card-body">
+
+					<div class="table-responsive">
+						<table id="add-row" class="display table table-striped table-hover">
+							<thead>
+								<tr>
+								
+									<th>Pelicula</th>
+									<th>Popularidad</th>
+									<th>% de votos</th>
+									<th>Conteo de votos</th>
+									<th>Fecha de lanzamiento</th>
+									<th>Descripción</th>
+
+								</tr>
+							</thead>
+							<tfoot>
+								<tr>
+						
+									<th>Pelicula</th>
+									<th>Popularidad</th>
+									<th>% de votos</th>
+									<th>Conteo de votos</th>
+									<th>Fecha de lanzamiento</th>
+									<th>Descripción</th>
+
+
+
+
+								</tr>
+							</tfoot>
+
+							<tbody>
+
+								{% for pelicula in peliculas %}
+								<tr>
+									<td>{{ pelicula.original_title }}</td>
+									<td>{{ pelicula.popularity }}</td>
+									<td>{{ pelicula.vote_average }}</td>
+									<td>{{ pelicula.vote_count }}</td>
+									<td>{{ pelicula.release_date }}</td>
+									<td>{{ pelicula.overview }}</td>
+									
+								</tr>	
+								{% endfor %}
+
+							</tbody>
+						</table>
+						<form action="{% url 'reporte' %}" method="get">
+							<button class="btn btn-default" type="submit">DESCARGAR REPORTE EN EXCEL</button>
+						</form>
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<!-- Atlantis DEMO methods, don't include it in your project! -->
+<script src="/static/assets/js/setting-demo2.js"></script>
+<script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+<script src="/static/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+<script>
+
+
+
+	$(document).ready(function () {
+		$('#add-row').DataTable({
+			"pageLength": 15,
+		});
+		$('#basic-datatables').DataTable({
+
+		});
+
+
+	});
+
+
+</script>
+
+{% endblock javascripts %}

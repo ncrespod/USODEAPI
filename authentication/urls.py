@@ -8,6 +8,7 @@ from django.urls import path
 from .views import login_view, register_user
 from django.contrib.auth.views import LogoutView
 from registros.views import Reg
+from peliculas.views import Reg2
 from registros import views
 from django.conf.urls.static import static 
 from datos.views import ReportePersonalizadoExcel
@@ -19,6 +20,7 @@ urlpatterns = [
     path('register/', register_user, name="register"),
     path("logout/", LogoutView.as_view(), name="logout"),
     path("Registros/", Reg.as_view(), name="tables-simple"),
+    path("Peliculas/", Reg2.as_view(), name="tables-simple2"),
     path('reporte/',ReportePersonalizadoExcel.as_view(), name = 'reporte'),
 
     

@@ -24,3 +24,7 @@ package-lock.json
 staticfiles/*
 !staticfiles/.gitkeep 
 .vscode/symbols.json
+
+DEBUG=True
+SECRET_KEY=S3cr3t_K#Key
+SERVER=django-atlantis-lite.appseed-srv1.com
